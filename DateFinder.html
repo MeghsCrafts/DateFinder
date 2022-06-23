@@ -1,0 +1,48 @@
+<html lang="en-us">
+    <meta http-equiv="refresh" content="3600">
+    <head>
+        <style type="text/css">
+            h1, p { text-align : center }
+            h1 {font-size: 4vw}
+            p {font-size: 2.5vw}
+
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s; 
+            }
+        </style>
+    </head>
+
+    <body>
+        <title>Important Dates for Marriage Certificates</title>
+        <h1>Important Dates for Marriage Certificates</h1>
+        <div class="card">
+            <p>Today's Date:</p>
+            <p><span id="datetime"></span></p>
+        </div>
+        <div class="card">
+            <p>Your Marriage Certificate will be available on or after: </p>
+            <p><span id="intentions"></span></p>
+        </div>
+        <div class="card">
+            <p>Your Marriage Certificate expires on: </p>
+            <p><span id="expiration"></span></p>
+        </div>
+
+    </body>
+
+    <script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleDateString('en-us', {month:'long', day:'numeric', year:'numeric'});
+
+        /* The following code was taken from https://stackoverflow.com/questions/563406/how-to-add-days-to-date */
+        Date.prototype.addDays = function(days) {
+            var date = new Date();
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+
+        document.getElementById("intentions").innerHTML = dt.addDays(3).toLocaleDateString('en-us', {month:'long', day:'numeric', year:'numeric'});
+        document.getElementById("expiration").innerHTML = dt.addDays(60).toLocaleDateString('en-us', {month:'long', day:'numeric', year:'numeric'});
+    </script>
+</html>
