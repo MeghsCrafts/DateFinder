@@ -34,6 +34,34 @@
 		border-radius : 20px;
 		margin-right : 20px;
 	    }
+
+	/* (A) FIXED WRAPPER */
+	.hwrap {
+	  overflow: hidden; /* HIDE SCROLL BAR */
+	  background: #eee;
+	}
+ 
+	/* (B) MOVING TICKER WRAPPER */
+	.hmove { display: flex; }
+
+	/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+	.hitem {
+	  flex-shrink: 0;
+	  width: 100%;
+	  box-sizing: border-box;
+	  padding: 1px;
+	  text-align: center;
+	}
+ 
+	/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+	/* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+	@keyframes tickerh {
+	  0% { transform: translate3d(100%, 0, 0); }
+	  100% { transform: translate3d(-350%, 0, 0); }
+	}
+	.hmove { animation: tickerh linear 150s infinite; }
+	.hmove:hover { animation-play-state: paused; }
+
         </style>
     </head>
 
@@ -101,7 +129,12 @@
 
 		</div>
 	</div>
-
+	<div class="hwrap"><div class="hmove">
+		<div class="hitem"><p>If you are filling out marriage intentions or a mail-in ballot application, please write legibly.</p></div>
+		<div class="hitem"><p>If you have questions, please ask us!</p></div>
+		<div class="hitem"><p>We love sharing information.</p></div>
+		<div class="hitem"><p>Did you know that Sir Benjamin Thompson, Count Rumford taught school in Wilmington in 1768?</p></div>
+	</div></div>
     </body>
 
     <script>
